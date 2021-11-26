@@ -15,12 +15,19 @@ namespace InlamningJeff.Tests
         FakeSocialEngine fakeSocialEngine = new FakeSocialEngine();
 
         [TestMethod()]
+        public void TestRegisterNewUser()
+        {
+
+        }
+
+        [TestMethod()]
         public void TestCreateUser()
         {
             // Arrange
             var userList = fakeSocialEngine.Users;
             User userToAdd = new User();
             userToAdd.Username = "Alice";
+            userToAdd.Password = "12345";
             userToAdd.Id = guid.GetHashCode();
 
             // Act
@@ -29,7 +36,6 @@ namespace InlamningJeff.Tests
             // Assert
             Assert.Fail();
         }
-
     }
     internal class FakeSocialEngine : ISocialEngine
     {
