@@ -9,7 +9,9 @@ namespace InlamningJeff
     public class User : IUser
     {
         public string Username { get; set; }
+        public string Password { get; set; }
         public int Id { get; set; }
+
         public User()
         {
 

@@ -35,12 +35,12 @@ namespace InlamningJeff.Tests
     {
         public List<User> Users { get; set; }
 
-        public void CreateUser(User user)
+        public void CreateUser(User userToCreate)
         {
             throw new NotImplementedException();
         }
 
-        public void FollowUser()
+        public void FollowUser(User userToFollow)
         {
             throw new NotImplementedException();
         }

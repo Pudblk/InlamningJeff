@@ -14,12 +14,11 @@ namespace InlamningJeff
         {
 
         }
-
-        public void CreateUser(User user)
+        public void CreateUser(User userToCreate)
         {
 
         }
-        public void FollowUser()
+        public void FollowUser(User userToFollow)
         {
 
         }
