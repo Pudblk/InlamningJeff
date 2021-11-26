@@ -39,7 +39,6 @@ namespace InlamningJeff.Tests
             
 
             // Act
-            fakeSocialEngine.RegisterNewUser();
 
 
             // Assert
@@ -50,14 +49,12 @@ namespace InlamningJeff.Tests
         public void TestCreateUser()
         {
             // Arrange
-            var userList = fakeSocialEngine.Users;
             User userToAdd = new User();
             userToAdd.Username = "Alice";
             userToAdd.Password = "12345";
             userToAdd.Id = guid.GetHashCode();
 
             // Act
-            fakeSocialEngine.CreateUser(userToAdd);
 
             // Assert
             Assert.Fail();
