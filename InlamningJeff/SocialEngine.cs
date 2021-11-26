@@ -12,11 +12,18 @@ namespace InlamningJeff
 
         public SocialEngine()
         {
-
+            Users = new List<User>();
         }
         public bool Login(string username, string password)
         {
-            bool loginResult = false;
+            foreach (User user in Users)
+            {
+                if(user.Username == username && user.Password == password)
+                {
+                    return true;
+                }
+            }
+            Console.WriteLine("Wrong Username or Password");
             return false;
         }
         public void RegisterNewUser()

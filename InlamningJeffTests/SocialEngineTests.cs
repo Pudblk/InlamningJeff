@@ -11,15 +11,14 @@ namespace InlamningJeff.Tests
     [TestClass()]
     public class SocialEngineTests
     {
-        Guid guid = new Guid();
         SocialEngine testSocialEngine = new SocialEngine();
 
         [TestMethod()]
-        [DataRow("Alice", 1234, true)]
+        [DataRow("Alice", "1234", true), DataRow("Alice", "12", false), DataRow("Bob", "1234", false)]
         public void TestLogin(string username, string password, bool expectedResult)
         {
             // Arrange
-            List<User> testUsers = new List<User>();
+            List<User> testUsers = testSocialEngine.Users;
             User testUser = new User();
             testUser.Username = username;
             testUser.Password = password;
@@ -36,13 +35,13 @@ namespace InlamningJeff.Tests
         public void TestRegisterNewUser()
         {
             // Arrange
-            
+
 
             // Act
 
 
             // Assert
-
+            Assert.Fail();
         }
 
         [TestMethod()]
@@ -52,7 +51,6 @@ namespace InlamningJeff.Tests
             User userToAdd = new User();
             userToAdd.Username = "Alice";
             userToAdd.Password = "12345";
-            userToAdd.Id = guid.GetHashCode();
 
             // Act
 
