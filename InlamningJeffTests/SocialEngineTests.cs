@@ -12,7 +12,7 @@ namespace InlamningJeff.Tests
     public class SocialEngineTests
     {
         SocialEngine testSocialEngine = new SocialEngine();
-
+        
         [TestMethod()]
         [DataRow("Alice", "1234", true), DataRow("Alice", "12", false), DataRow("Bob", "1234", false)]
         public void TestLogin(string username, string password, bool expectedResult)
@@ -32,27 +32,16 @@ namespace InlamningJeff.Tests
         }
 
         [TestMethod()]
-        public void TestRegisterNewUser()
+        [DataRow("Alice", "1234", true), DataRow("Bob", "1234", true)]
+        public void TestRegisterNewUser(string username, string password, bool expectedResult)
         {
             // Arrange
+            List<User> users = testSocialEngine.Users;
 
 
             // Act
+            testSocialEngine.RegisterNewUser();
 
-
-            // Assert
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void TestCreateUser()
-        {
-            // Arrange
-            User userToAdd = new User();
-            userToAdd.Username = "Alice";
-            userToAdd.Password = "12345";
-
-            // Act
 
             // Assert
             Assert.Fail();

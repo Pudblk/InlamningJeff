@@ -9,7 +9,7 @@ namespace InlamningJeff
     public class SocialEngine : ISocialEngine
     {
         public List<User> Users { get; set; }
-
+        Guid idGenerator = new Guid();
         public SocialEngine()
         {
             Users = new List<User>();
@@ -26,13 +26,24 @@ namespace InlamningJeff
             Console.WriteLine("Wrong Username or Password");
             return false;
         }
-        public void RegisterNewUser()
+        public bool RegisterNewUser()
         {
+            bool sucessfullRegistration = false;
+            User user = new User();
+            
+            Console.WriteLine("Please choose a username");
+            user.Username = Console.ReadLine();
 
-        }
-        public void CreateUser(User userToCreate)
-        {
-
+            Console.WriteLine("Enter a password");
+            user.Password= Console.ReadLine();
+            user.Id = idGenerator.GetHashCode();
+            if (sucessfullRegistration)
+            {
+                Users.Add(user);
+                Console.WriteLine("Registration Sucessfull");
+                return true;
+            }
+            return false;
         }
         public void FollowUser(User userToFollow)
         {
