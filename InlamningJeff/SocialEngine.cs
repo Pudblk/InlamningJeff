@@ -14,6 +14,15 @@ namespace InlamningJeff
         {
 
         }
+        public bool Login(string username, string password)
+        {
+            bool loginResult = false;
+            return false;
+        }
+        public void RegisterNewUser()
+        {
+
+        }
         public void CreateUser(User userToCreate)
         {
 
