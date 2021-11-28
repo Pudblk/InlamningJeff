@@ -48,7 +48,8 @@ namespace InlamningJeff.Tests
         }
 
         [TestMethod()]
-        public void TestUserPostMessage() 
+        [DataRow("Alice", "/post", "What a wonderfully sunny day!")]
+        public void TestUserPostMessage(string username, string command, string message)
         {
             // Arrange
 
@@ -59,7 +60,8 @@ namespace InlamningJeff.Tests
         }
 
         [TestMethod()]
-        public void TestCanReadPost()
+        [DataRow("Bob", "/timeline", "Alice")]
+        public void TestReadUserPosts(string user, string command, string userPostsToRead)
         {
             // Arrange
 
@@ -70,7 +72,8 @@ namespace InlamningJeff.Tests
         }
 
         [TestMethod()]
-        public void TestFollowOtherUser()
+        [DataRow("Charlie", "/follow", "Alice")]
+        public void TestFollowOtherUser(string user, string command, string userToFollow)
         {
             // Arrange
 
@@ -81,7 +84,8 @@ namespace InlamningJeff.Tests
         }
 
         [TestMethod()]
-        public void TestGetUserWall()
+        [DataRow("Charlie", "wall")]
+        public void TestGetUserWall(string user, string command)
         {
             // Arrange
 
@@ -92,7 +96,8 @@ namespace InlamningJeff.Tests
         }
 
         [TestMethod()]
-        public void TestMessageGetsTimestamp()
+        [DataRow("Bob", "/post", "@", "Charlie")]
+        public void TestTagOtherUser(string user, string command, char tagCharacter, string userToTag)
         {
             // Arrange
 
@@ -103,7 +108,8 @@ namespace InlamningJeff.Tests
         }
 
         [TestMethod()]
-        public void TestCanTagOtherUser()
+        [DataRow("Mallory", "/send_message", "Alice")]
+        public void TestPostDirectMessage(string user, string command, string userToDirectMessage)
         {
             // Arrange
 
@@ -114,18 +120,8 @@ namespace InlamningJeff.Tests
         }
 
         [TestMethod()]
-        public void TestPostDirectMessage()
-        {
-            // Arrange
-
-            // Act
-
-            // Assert
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        public void TestAliceCanSeeAllPrivateMessages()
+        [DataRow("Alice", "/view_messages")]
+        public void TestAliceCanSeeAllPrivateMessages(string user, string command)
         {
             // Arrange
 
