@@ -12,7 +12,7 @@ namespace InlamningJeff.Tests
     public class SocialEngineTests
     {
         SocialEngine testSocialEngine = new SocialEngine();
-        
+
         [TestMethod()]
         [DataRow("Alice", "1234", true), DataRow("Alice", "12", false), DataRow("Bob", "1234", false)]
         public void TestLogin(string username, string password, bool expectedResult)
@@ -45,6 +45,25 @@ namespace InlamningJeff.Tests
 
             // Assert
             Assert.Fail();
+        }
+    }
+    internal class FakeSocialEngine : ISocialEngine
+    {
+        public List<User> Users { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public void FollowUser(User userToFollow)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Login(string username, string password)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool RegisterNewUser()
+        {
+            throw new NotImplementedException();
         }
     }
 }
