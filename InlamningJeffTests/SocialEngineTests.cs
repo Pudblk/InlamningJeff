@@ -133,7 +133,11 @@ namespace InlamningJeff.Tests
     }
     internal class FakeSocialEngine : ISocialEngine
     {
-        public List<User> Users { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public List<User> Users { get; set; }
+        public FakeSocialEngine()
+        {
+
+        }
 
         public void FollowUser(User userToFollow)
         {
@@ -149,5 +153,6 @@ namespace InlamningJeff.Tests
         {
             throw new NotImplementedException();
         }
+
     }
 }
