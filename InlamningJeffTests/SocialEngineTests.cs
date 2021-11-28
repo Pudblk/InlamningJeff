@@ -50,48 +50,88 @@ namespace InlamningJeff.Tests
         [TestMethod()]
         public void TestUserPostMessage() 
         {
+            // Arrange
+
+            // Act
+
+            // Assert
             Assert.Fail();
         }
 
         [TestMethod()]
         public void TestCanReadPost()
         {
+            // Arrange
+
+            // Act
+
+            // Assert
             Assert.Fail();
         }
 
         [TestMethod()]
         public void TestFollowOtherUser()
         {
+            // Arrange
+
+            // Act
+
+            // Assert
             Assert.Fail();
         }
 
         [TestMethod()]
         public void TestGetUserWall()
         {
+            // Arrange
+
+            // Act
+
+            // Assert
             Assert.Fail();
         }
 
         [TestMethod()]
         public void TestMessageGetsTimestamp()
         {
+            // Arrange
+
+            // Act
+
+            // Assert
             Assert.Fail();
         }
 
         [TestMethod()]
         public void TestCanTagOtherUser()
         {
+            // Arrange
+
+            // Act
+
+            // Assert
             Assert.Fail();
         }
 
         [TestMethod()]
         public void TestPostDirectMessage()
         {
+            // Arrange
+
+            // Act
+
+            // Assert
             Assert.Fail();
         }
 
         [TestMethod()]
         public void TestAliceCanSeeAllPrivateMessages()
         {
+            // Arrange
+
+            // Act
+
+            // Assert
             Assert.Fail();
         }
     }
