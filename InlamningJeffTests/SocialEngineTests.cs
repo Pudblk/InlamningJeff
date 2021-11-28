@@ -46,6 +46,54 @@ namespace InlamningJeff.Tests
             // Assert
             Assert.Fail();
         }
+
+        [TestMethod()]
+        public void TestUserPostMessage() 
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void TestCanReadPost()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void TestFollowOtherUser()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void TestGetUserWall()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void TestMessageGetsTimestamp()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void TestCanTagOtherUser()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void TestPostDirectMessage()
+        {
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        public void TestAliceCanSeeAllPrivateMessages()
+        {
+            Assert.Fail();
+        }
     }
     internal class FakeSocialEngine : ISocialEngine
     {

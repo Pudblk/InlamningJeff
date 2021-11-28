@@ -1,0 +1,41 @@
+Implementera en konsolbaserad app för sociala nätverk som uppfyller scenarierna nedan.
+
+Applikationen måste använda konsolen för input och output.
+
+Användare skickar kommandon till applikationen. Kommandon börjar alltid med användarens namn.
+
+Icke-existerande användare bör skapas när de lägger upp sitt första meddelande. Applikationen bör inte starta med en fördefinierad lista över användare.
+
+Användarbeteende scenarier
+Implementera följande:
+
+Posta inlägg
+Alice kan publicera meddelanden till en personlig tidslinje.
+> Alice /post What a wonderfully sunny day!
+
+Läsa inlägg
+Bob kan se Alices tidslinje
+> Bob /timeline Alice
+
+Följa
+Charlie kan prenumerera på Alices tidslinje och se en samlad lista över alla prenumerationer
+> Charlie /follow Alice
+
+Vägg
+Charlie kan se en samlad lista över alla personer som han har prenumererat på att följa.
+> Charlie /wall
+
+Obs: Om Charlie följer Alice och Bob kommer han att se en tidssekvenserad lista med inlägg från dem på sin vägg. Det är inlägget som visas senast överst.
+
+Omnämnanden
+Bob kan länka till Charlie i ett meddelande med "@".
+> Bob /post @Charlie what are your plans tonight?
+
+Obs: detta är inte ett nytt kommando, bara en utökning av hur /post-kommandot fungerar. Alla omnämnanden ska visas på en användares vägg även om de inte följer användaren.
+
+Direktmeddelanden
+Mallory kan skicka ett privat meddelande till Alice.
+> Mallory /send_message Alice
+
+Alice kan se alla privata meddelanden
+> Alice /view_messages
