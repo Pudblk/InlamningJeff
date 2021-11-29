@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InlamningJeff
 {
-    public class User : IUser
+    public class User
     {
         public string Username { get; set; }
         public string Password { get; set; }
