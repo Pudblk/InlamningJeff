@@ -11,8 +11,7 @@ namespace InlamningJeff
         public string Username { get; set; }
         public string Password { get; set; }
         public int Id { get; set; }
-        public List<Post> TimelineInPost { get; set; }
-        public List<Message> Messages{ get; set; }
+        public List<Message> PrivateMessages { get; set; }
 
         public User()
         {

@@ -88,16 +88,21 @@ namespace InlamningJeff.Tests
         }
 
         [TestMethod()]
-        [DataRow("Charlie", "wall")]
-        public void TestGetUserWall(string user, string command)
+        [DataRow("Charlie", "Bob", "Hello world!")]
+        public void TestViewWall(string username, string userToFollow, string message)
         {
             // Arrange
             var engine = new SocialEngine();
+
             // Act
-            var posts = engine.GetUserWall(user);
+            engine.Post(username, message);
+            engine.Post(username, message);
+            engine.Post(username, message);
+            engine.FollowUser(username, userToFollow);
+
+
             // Assert
             Assert.AreEqual(message, actualPost);
-            Assert.Fail();
         }
 
         [TestMethod()]

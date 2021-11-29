@@ -9,7 +9,6 @@ namespace InlamningJeff
     public class SocialEngine : ISocialEngine
     {
         public List<User> Users { get; set; }
-        Guid idGenerator = new Guid();
         public SocialEngine()
         {
             Users = new List<User>();
@@ -45,9 +44,20 @@ namespace InlamningJeff
             }
             return false;
         }
-        public void FollowUser(User userToFollow)
+        public void FollowUser(string username, User userToFollow)
         {
 
+        }
+
+        public List<Post> Wall(string user, string message)
+        {
+            List<Post> allPosts { get; set;}
+           return Users.FirstOrDefault(x => x.Name).TimelinePosts;
+        }
+
+        public void Post(object username, string message)
+        {
+            throw new NotImplementedException();
         }
     }
 }
