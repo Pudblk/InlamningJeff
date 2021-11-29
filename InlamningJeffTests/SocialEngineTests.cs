@@ -11,21 +11,21 @@ namespace InlamningJeff.Tests
     [TestClass()]
     public class SocialEngineTests
     {
-        SocialEngine testSocialEngine = new SocialEngine();
 
         [TestMethod()]
         [DataRow("Alice", "1234", true), DataRow("Alice", "12", false), DataRow("Bob", "1234", false)]
         public void TestLogin(string username, string password, bool expectedResult)
         {
             // Arrange
-            List<User> testUsers = testSocialEngine.Users;
+            var engine = new SocialEngine();
+            List<User> testUsers = engine.Users;
             User testUser = new User();
             testUser.Username = username;
             testUser.Password = password;
             testUsers.Add(testUser);
 
             // Act
-            var actualResult = testSocialEngine.Login(username, password);
+            var actualResult = engine.Login(username, password);
 
             // Assert
             Assert.IsTrue(actualResult);
@@ -36,11 +36,12 @@ namespace InlamningJeff.Tests
         public void TestRegisterNewUser(string username, string password, bool expectedResult)
         {
             // Arrange
-            List<User> users = testSocialEngine.Users;
+            var engine = new SocialEngine();
+            List<User> users = engine.Users;
 
 
             // Act
-            testSocialEngine.RegisterNewUser();
+            engine.RegisterNewUser();
 
 
             // Assert
@@ -52,8 +53,10 @@ namespace InlamningJeff.Tests
         public void TestUserPostMessage(string username, string command, string message)
         {
             // Arrange
+            var socialEngine = new SocialEngine();
 
             // Act
+            socialEngine.Post(username, message);
 
             // Assert
             Assert.Fail();
@@ -79,6 +82,7 @@ namespace InlamningJeff.Tests
 
             // Act
 
+
             // Assert
             Assert.Fail();
         }
@@ -88,10 +92,11 @@ namespace InlamningJeff.Tests
         public void TestGetUserWall(string user, string command)
         {
             // Arrange
-
+            var engine = new SocialEngine();
             // Act
-
+            var posts = engine.GetUserWall(user);
             // Assert
+            Assert.AreEqual(message, actualPost);
             Assert.Fail();
         }
 
@@ -130,29 +135,5 @@ namespace InlamningJeff.Tests
             // Assert
             Assert.Fail();
         }
-    }
-    internal class FakeSocialEngine : ISocialEngine
-    {
-        public List<User> Users { get; set; }
-        public FakeSocialEngine()
-        {
-
-        }
-
-        public void FollowUser(User userToFollow)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Login(string username, string password)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool RegisterNewUser()
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }
