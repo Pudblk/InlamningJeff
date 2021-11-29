@@ -11,57 +11,6 @@ namespace InlamningJeff.Tests
     [TestClass()]
     public class SocialEngineTests
     {
-
-        [TestMethod()]
-        [DataRow("Alice", "1234", true), DataRow("Alice", "12", false), DataRow("Bob", "1234", false)]
-        public void TestLogin(string username, string password, bool expectedResult)
-        {
-            // Arrange
-            var engine = new SocialEngine();
-            List<User> testUsers = engine.Users;
-            User testUser = new User();
-            testUser.Username = username;
-            testUser.Password = password;
-            testUsers.Add(testUser);
-
-            // Act
-            var actualResult = engine.Login(username, password);
-
-            // Assert
-            Assert.IsTrue(actualResult);
-        }
-
-        [TestMethod()]
-        [DataRow("Alice", "1234", true), DataRow("Bob", "1234", true)]
-        public void TestRegisterNewUser(string username, string password, bool expectedResult)
-        {
-            // Arrange
-            var engine = new SocialEngine();
-            List<User> users = engine.Users;
-
-
-            // Act
-            engine.RegisterNewUser();
-
-
-            // Assert
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        [DataRow("Alice", "/post", "What a wonderfully sunny day!")]
-        public void TestUserPostMessage(string username, string command, string message)
-        {
-            // Arrange
-            var socialEngine = new SocialEngine();
-
-            // Act
-            socialEngine.Post(username, message);
-
-            // Assert
-            Assert.Fail();
-        }
-
         [TestMethod()]
         [DataRow("Bob", "/timeline", "Alice")]
         public void TestReadUserPosts(string user, string command, string userPostsToRead)
@@ -91,18 +40,18 @@ namespace InlamningJeff.Tests
         [DataRow("Charlie", "Bob", "Hello world!")]
         public void TestViewWall(string username, string userToFollow, string message)
         {
-            // Arrange
-            var engine = new SocialEngine();
+            //// Arrange
+            //var engine = new SocialEngine();
 
-            // Act
-            engine.Post(username, message);
-            engine.Post(username, message);
-            engine.Post(username, message);
-            engine.FollowUser(username, userToFollow);
+            //// Act
+            //engine.Post(username, message);
+            //engine.Post(username, message);
+            //engine.Post(username, message);
+            //engine.FollowUser(username, userToFollow);
 
 
-            // Assert
-            Assert.AreEqual(message, actualPost);
+            //// Assert
+            //Assert.AreEqual(message, actualPost);
         }
 
         [TestMethod()]
@@ -118,15 +67,21 @@ namespace InlamningJeff.Tests
         }
 
         [TestMethod()]
-        [DataRow("Mallory", "/send_message", "Alice")]
-        public void TestPostDirectMessage(string user, string command, string userToDirectMessage)
+        [DataRow("Mallory", "Hello World!")]
+        [DataRow("Bob", "Goodbye World!")]
+        public void TestPost(string expectedUserName, string expectedPost)
         {
             // Arrange
+            var engine = new SocialEngine();
 
             // Act
+            engine.Post(expectedUserName, expectedPost);
+            var actualUser = engine.Users.FirstOrDefault(user => user.Name == expectedUserName);
+            var actualPost = actualUser.Posts.FirstOrDefault(user => user.Body == expectedPost);
 
             // Assert
-            Assert.Fail();
+            Assert.AreEqual(expectedUserName, actualUser.Name);
+            Assert.AreEqual(expectedPost, actualPost.Body);
         }
 
         [TestMethod()]

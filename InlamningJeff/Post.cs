@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace InlamningJeff
 {
-    public class Message
+    public class Post
     {
-        public string Body { get; set; }
-        public string From { get; set; }
-        public string To { get; set; }
         public DateTime TimeStamp { get; set; }
+        public string Body { get; set; }
     }
 }

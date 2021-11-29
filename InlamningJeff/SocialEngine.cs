@@ -18,15 +18,24 @@ namespace InlamningJeff
 
         }
 
-        public List<Post> Wall(string user, string message)
+        public void Post(string userName, string textToPost)
         {
-            List<Post> allPosts { get; set;}
-           return Users.FirstOrDefault(x => x.Name).TimelinePosts;
-        }
+            Post post = new Post();
+            post.Body = textToPost;
+            post.TimeStamp = DateTime.Now;
 
-        public void Post(object username, string message)
-        {
-            throw new NotImplementedException();
+            var userExist = Users.FirstOrDefault(x => x.Name == userName);
+
+            if(userExist == null)
+            {
+                var userToCreate = new User(userName);
+                userToCreate.Posts.Add(post);
+                Users.Add(userToCreate);
+            }
+            else
+            {
+                userExist.Posts.Add(post);
+            }
         }
     }
 }
