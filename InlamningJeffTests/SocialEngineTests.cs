@@ -12,61 +12,6 @@ namespace InlamningJeff.Tests
     public class SocialEngineTests
     {
         [TestMethod()]
-        [DataRow("Bob", "/timeline", "Alice")]
-        public void TestReadUserPosts(string user, string command, string userPostsToRead)
-        {
-            // Arrange
-
-            // Act
-
-            // Assert
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        [DataRow("Charlie", "/follow", "Alice")]
-        public void TestFollowOtherUser(string user, string command, string userToFollow)
-        {
-            // Arrange
-
-            // Act
-
-
-            // Assert
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        [DataRow("Charlie", "Bob", "Hello world!")]
-        public void TestViewWall(string username, string userToFollow, string message)
-        {
-            //// Arrange
-            //var engine = new SocialEngine();
-
-            //// Act
-            //engine.Post(username, message);
-            //engine.Post(username, message);
-            //engine.Post(username, message);
-            //engine.FollowUser(username, userToFollow);
-
-
-            //// Assert
-            //Assert.AreEqual(message, actualPost);
-        }
-
-        [TestMethod()]
-        [DataRow("Bob", "/post", "@", "Charlie")]
-        public void TestTagOtherUser(string user, string command, char tagCharacter, string userToTag)
-        {
-            // Arrange
-
-            // Act
-
-            // Assert
-            Assert.Fail();
-        }
-
-        [TestMethod()]
         [DataRow("Mallory", "Hello World!")]
         [DataRow("Bob", "Goodbye World!")]
         public void TestPost(string expectedUserName, string expectedPost)
@@ -85,8 +30,54 @@ namespace InlamningJeff.Tests
         }
 
         [TestMethod()]
-        [DataRow("Alice", "/view_messages")]
-        public void TestAliceCanSeeAllPrivateMessages(string user, string command)
+        [DataRow("Mallory", "Hello World!", "Alice")]
+        [DataRow("Bob", "Goodbye World!", "Alice")]
+        public void TestGetWallFromUser(string userName, string message, string userToGetWallFrom)
+        {
+            // Arrange
+            var engine = new SocialEngine();
+            
+
+            // Act
+            engine.Post(userToGetWallFrom, message);
+            engine.Post(userToGetWallFrom, message);
+            var user = engine.Users.FirstOrDefault(user => user.Name == userToGetWallFrom);
+            var expectedUserWall = user.Posts;
+            var actualWall = engine.GetWallFrom(userName);
+
+            // Assert
+            Assert.AreEqual(expectedUserWall, actualWall);
+        }
+
+        [TestMethod()]
+        [DataRow("Charlie", "/follow", "Alice")]
+        public void TestFollowOtherUser(string user, string command, string userToFollow)
+        {
+            // Arrange
+
+            // Act
+
+            // Assert
+            Assert.Fail();
+        }
+
+        [TestMethod()]
+        [DataRow("Bob", "Charlie")]
+        public void TestTagOtherUser(string user, string userToTag)
+        {
+            // Arrange
+
+            // Act
+
+            // Assert
+            Assert.Fail();
+        }
+
+       
+
+        [TestMethod()]
+        [DataRow("Alice")]
+        public void TestAliceCanSeeAllPrivateMessages(string user)
         {
             // Arrange
 

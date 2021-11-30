@@ -18,6 +18,12 @@ namespace InlamningJeff
 
         }
 
+        public List<Post> GetWallFrom(string userName)
+        {
+            var user = Users.FirstOrDefault(user => user.Name == userName);
+            var userWall = user.Posts;
+            return userWall;
+        }
         public void Post(string userName, string textToPost)
         {
             Post post = new Post();
