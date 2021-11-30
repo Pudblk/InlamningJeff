@@ -62,5 +62,23 @@ namespace InlamningJeff
                 }
             }
         }
+
+        public void ProcessUserInput()
+        {
+            string userInput, userName, userCommand;
+            Console.WriteLine("What do you want to do?");
+            userInput = Console.ReadLine();
+            userInput.Trim();
+
+            
+            for (int i = 0; i < userInput.Length; i++)
+            {
+                if(userInput[i] == ' ')
+                {
+                    userName = userInput.Substring(0, i);
+                }
+            }
+
+        }
     }
 }
