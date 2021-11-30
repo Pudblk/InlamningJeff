@@ -30,26 +30,27 @@ namespace InlamningJeff.Tests
         }
 
         [TestMethod()]
-        public void TestGetTimeline()
+        [DataRow("Alice", "Hello World!", "Goodbye!", "Bob")]
+        public void TestGetTimeline(string userNameToGetFrom, string firstPost, string secondPost, string userNameToRecieve)
         {
             // Arrange
             var engine = new SocialEngine();
-            var userToGetPostsFrom = new User("Alice");
+            var userToGetPostsFrom = new User(userNameToGetFrom);
             engine.Users.Add(userToGetPostsFrom);
 
-            var aliceFirstPost = new Post("Hello World!");
+            var aliceFirstPost = new Post(firstPost);
             userToGetPostsFrom.Posts.Add(aliceFirstPost);
 
-            var aliceSecondPost = new Post("Goodbye!");
+            var aliceSecondPost = new Post(secondPost);
             userToGetPostsFrom.Posts.Add(aliceSecondPost);
 
             var expectedResult = userToGetPostsFrom.Posts;
 
-            var userToRecievePosts = new User("Bob");
+            var userToRecievePosts = new User(userNameToRecieve);
             engine.Users.Add(userToRecievePosts);
 
             // Act
-            var actualResult = engine.GetTimeline("Alice");
+            var actualResult = engine.GetTimeline(userNameToGetFrom);
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
