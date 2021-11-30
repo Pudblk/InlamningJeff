@@ -10,5 +10,11 @@ namespace InlamningJeff
     {
         public DateTime TimeStamp { get; set; }
         public string Body { get; set; }
+
+        public Post(string input)
+        {
+            TimeStamp = DateTime.Now;
+            Body = input;
+        }
     }
 }

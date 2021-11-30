@@ -13,22 +13,10 @@ namespace InlamningJeff
         {
             Users = new List<User>();
         }
-        public void FollowUser(string username, User userToFollow)
-        {
-
-        }
-
-        public List<Post> GetWallFrom(string userName)
-        {
-            var user = Users.FirstOrDefault(user => user.Name == userName);
-            var userWall = user.Posts;
-            return userWall;
-        }
+        
         public void Post(string userName, string textToPost)
         {
-            Post post = new Post();
-            post.Body = textToPost;
-            post.TimeStamp = DateTime.Now;
+            Post post = new Post(textToPost);
 
             var userExist = Users.FirstOrDefault(x => x.Name == userName);
 
@@ -42,6 +30,22 @@ namespace InlamningJeff
             {
                 userExist.Posts.Add(post);
             }
+        }
+
+        public List<Post> GetTimeline(string userToGetTimelineFrom)
+        {
+            var list = new List<Post>();
+
+            var user = Users.FirstOrDefault(user => user.Name == userToGetTimelineFrom);
+
+            list = user.Posts;
+
+            return list;
+        }
+
+        public void FollowUser(string username, User userToFollow)
+        {
+
         }
     }
 }

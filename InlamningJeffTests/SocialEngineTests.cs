@@ -30,61 +30,30 @@ namespace InlamningJeff.Tests
         }
 
         [TestMethod()]
-        [DataRow("Mallory", "Hello World!", "Alice")]
-        [DataRow("Bob", "Goodbye World!", "Alice")]
-        public void TestGetWallFromUser(string userName, string message, string userToGetWallFrom)
+        public void TestGetTimeline()
         {
             // Arrange
             var engine = new SocialEngine();
-            
+            var userToGetPostsFrom = new User("Alice");
+            engine.Users.Add(userToGetPostsFrom);
+
+            var aliceFirstPost = new Post("Hello World!");
+            userToGetPostsFrom.Posts.Add(aliceFirstPost);
+
+            var aliceSecondPost = new Post("Goodbye!");
+            userToGetPostsFrom.Posts.Add(aliceSecondPost);
+
+            var expectedResult = userToGetPostsFrom.Posts;
+
+            var userToRecievePosts = new User("Bob");
+            engine.Users.Add(userToRecievePosts);
 
             // Act
-            engine.Post(userToGetWallFrom, message);
-            engine.Post(userToGetWallFrom, message);
-            var user = engine.Users.FirstOrDefault(user => user.Name == userToGetWallFrom);
-            var expectedUserWall = user.Posts;
-            var actualWall = engine.GetWallFrom(userName);
+            var actualResult = engine.GetTimeline("Alice");
 
             // Assert
-            Assert.AreEqual(expectedUserWall, actualWall);
+            Assert.AreEqual(expectedResult, actualResult);
         }
 
-        [TestMethod()]
-        [DataRow("Charlie", "/follow", "Alice")]
-        public void TestFollowOtherUser(string user, string command, string userToFollow)
-        {
-            // Arrange
-
-            // Act
-
-            // Assert
-            Assert.Fail();
-        }
-
-        [TestMethod()]
-        [DataRow("Bob", "Charlie")]
-        public void TestTagOtherUser(string user, string userToTag)
-        {
-            // Arrange
-
-            // Act
-
-            // Assert
-            Assert.Fail();
-        }
-
-       
-
-        [TestMethod()]
-        [DataRow("Alice")]
-        public void TestAliceCanSeeAllPrivateMessages(string user)
-        {
-            // Arrange
-
-            // Act
-
-            // Assert
-            Assert.Fail();
-        }
     }
 }
