@@ -63,22 +63,24 @@ namespace InlamningJeff
             }
         }
 
-        public void ProcessUserInput()
+        public void ProcessUserInput(string inputToProcess)
         {
-            string userInput, userName, userCommand;
-            Console.WriteLine("What do you want to do?");
-            userInput = Console.ReadLine();
-            userInput.Trim();
-
+            string userName, userCommand, userMessage;
             
-            for (int i = 0; i < userInput.Length; i++)
-            {
-                if(userInput[i] == ' ')
-                {
-                    userName = userInput.Substring(0, i);
-                }
-            }
+            inputToProcess.Trim();
 
+            var endOfUserName = inputToProcess.IndexOf(' ');
+            userName = inputToProcess.Substring(0, endOfUserName);
+
+            inputToProcess += inputToProcess.Remove(0, endOfUserName);
+
+            var startOfUserCommand = inputToProcess.IndexOf('/');
+            var endOfUserCommand = inputToProcess.IndexOf(' ');
+            userCommand = inputToProcess.Substring(startOfUserCommand, endOfUserCommand);
+
+            inputToProcess += inputToProcess.Remove(0, endOfUserCommand);
+
+            userMessage = inputToProcess;
         }
     }
 }

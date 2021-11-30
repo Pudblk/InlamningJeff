@@ -10,7 +10,6 @@ namespace InlamningJeff
         {
             SocialEngine engine = new SocialEngine();
             bool running = true;
-            string userName;
             string command;
             while(running)
             {
@@ -21,10 +20,11 @@ namespace InlamningJeff
                     "To see another users timeline write: \"Your username\" /timeline \"The username of another user.\"\n" +
                     "To follow another user write: \"Your username\" /follow \"The username of another user.\"\n" +
                     "To see a wall of posts from all the users you are following write: \"Your username\" /wall.");
-                engine.ProcessUserInput();
+                Console.WriteLine("What do you want to do?");
 
-                string input = Console.ReadLine();
-                
+                engine.ProcessUserInput(Console.ReadLine());
+
+
                 Console.WriteLine("Do you want to continue: Y/N");
                 command = Console.ReadLine();
                 if(command == "N")
