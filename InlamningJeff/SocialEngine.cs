@@ -36,16 +36,18 @@ namespace InlamningJeff
         {
             var list = new List<Post>();
 
-            var user = Users.FirstOrDefault(user => user.Name == userToGetTimelineFrom);
+            var userTimeline = Users.FirstOrDefault(user => user.Name == userToGetTimelineFrom);
 
-            list = user.Posts;
+            list = userTimeline.Posts;
 
             return list;
         }
 
-        public void FollowUser(string username, User userToFollow)
+        public void FollowUser(string userToFollow, string userNameOfFollower)
         {
-
+            var followUser = Users.FirstOrDefault(user => user.Name == userToFollow);
+            var followingUser = Users.FirstOrDefault(user => user.Name == userNameOfFollower);
+            followingUser.Following.Add(followUser);
         }
     }
 }

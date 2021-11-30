@@ -31,6 +31,7 @@ namespace InlamningJeff.Tests
 
         [TestMethod()]
         [DataRow("Alice", "Hello World!", "Goodbye!", "Bob")]
+        [DataRow("Charlie", "First Message", "Second Message", "Alice")]
         public void TestGetTimeline(string userNameToGetFrom, string firstPost, string secondPost, string userNameToRecieve)
         {
             // Arrange
@@ -56,5 +57,28 @@ namespace InlamningJeff.Tests
             Assert.AreEqual(expectedResult, actualResult);
         }
 
+        [TestMethod()]
+        [DataRow("Alice", "Charlie")]
+        public void TestFollowUser(string leaderUserName, string followerUserName)
+        {
+            // Arrange
+            var engine = new SocialEngine();
+
+            var leader = new User(leaderUserName);
+            engine.Users.Add(leader);
+
+            var follower = new User(followerUserName);
+            engine.Users.Add(follower);
+
+            var expectedResult = follower.Following;
+
+            // Act
+            engine.FollowUser(leaderUserName, followerUserName);
+            var actualUser = engine.Users.FirstOrDefault(user => user.Name == followerUserName);
+            var actualResult = actualUser.Following;
+
+            // Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
     }
 }
