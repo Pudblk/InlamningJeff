@@ -59,6 +59,7 @@ namespace InlamningJeff.Tests
 
         [TestMethod()]
         [DataRow("Alice", "Charlie")]
+        [DataRow("Bob", "James")]
         public void TestFollowUser(string leaderUserName, string followerUserName)
         {
             // Arrange
@@ -74,11 +75,23 @@ namespace InlamningJeff.Tests
 
             // Act
             engine.FollowUser(leaderUserName, followerUserName);
+
             var actualUser = engine.Users.FirstOrDefault(user => user.Name == followerUserName);
             var actualResult = actualUser.Following;
 
             // Assert
             Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod()]
+        public void TestGetWall()
+        {
+            // Arrange
+
+            // Act
+
+            // Assert
+            Assert.Fail();
         }
     }
 }

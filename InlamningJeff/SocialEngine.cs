@@ -49,5 +49,14 @@ namespace InlamningJeff
             var followingUser = Users.FirstOrDefault(user => user.Name == userNameOfFollower);
             followingUser.Following.Add(followUser);
         }
+
+        public List<Post> GetWall(string userName)
+        {
+            var wallOfPosts = new List<Post>();
+            var userToRecieveWall = Users.FirstOrDefault(user => user.Name == userName);
+
+
+            return wallOfPosts;
+        }
     }
 }
