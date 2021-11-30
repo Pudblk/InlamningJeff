@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InlamningJeffTests;
 
 namespace InlamningJeff.Tests
 {
@@ -84,14 +85,35 @@ namespace InlamningJeff.Tests
         }
 
         [TestMethod()]
-        public void TestGetWall()
+        [DataRow("Bob", "Alice", "Charlie")]
+        public void TestGetWall(string userName, string firstUserName, string secondUserName)
         {
             // Arrange
+            var engine = new SocialEngine();
+            var fakeEngineData = new FakeEngineData();
+
+            var firstUser = new User(firstUserName);
+            firstUser.Posts = fakeEngineData.GetFakePosts();
+            engine.Users.Add(firstUser);
+
+            var secondUser = new User(secondUserName);
+            secondUser.Posts = fakeEngineData.GetFakePosts();
+            engine.Users.Add(secondUser);
+
+            var user = new User(userName);
+            user.Following.Add(firstUser);
+            user.Following.Add(secondUser);
+            engine.Users.Add(user);
+
+            var expectedWallResult = user.Wall;
 
             // Act
+            engine.GetWall(userName);
+            var actualUser = engine.Users.FirstOrDefault(user => user.Name == userName);
+            var actualWallResult = actualUser.Wall;
 
             // Assert
-            Assert.Fail();
+            Assert.AreEqual(expectedWallResult, actualWallResult);
         }
     }
 }

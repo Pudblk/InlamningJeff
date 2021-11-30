@@ -13,14 +13,14 @@ namespace InlamningJeff
         {
             Users = new List<User>();
         }
-        
+
         public void Post(string userName, string textToPost)
         {
             Post post = new Post(textToPost);
 
             var userExist = Users.FirstOrDefault(x => x.Name == userName);
 
-            if(userExist == null)
+            if (userExist == null)
             {
                 var userToCreate = new User(userName);
                 userToCreate.Posts.Add(post);
@@ -50,13 +50,17 @@ namespace InlamningJeff
             followingUser.Following.Add(followUser);
         }
 
-        public List<Post> GetWall(string userName)
+        public void GetWall(string userName)
         {
-            var wallOfPosts = new List<Post>();
-            var userToRecieveWall = Users.FirstOrDefault(user => user.Name == userName);
-
-
-            return wallOfPosts;
+            var user = Users.FirstOrDefault(user => user.Name == userName);
+            
+            foreach (var item in user.Following)
+            {
+                foreach (var post in user.Posts)
+                {
+                    user.Wall.Add(post);
+                }
+            }
         }
     }
 }
