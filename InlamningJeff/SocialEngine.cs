@@ -53,7 +53,7 @@ namespace InlamningJeff
         public void GetWall(string userName)
         {
             var user = Users.FirstOrDefault(user => user.Name == userName);
-            
+
             foreach (var item in user.Following)
             {
                 foreach (var post in user.Posts)
@@ -66,21 +66,12 @@ namespace InlamningJeff
         public void ProcessUserInput(string inputToProcess)
         {
             string userName, userCommand, userMessage;
-            
             inputToProcess.Trim();
 
-            var endOfUserName = inputToProcess.IndexOf(' ');
-            userName = inputToProcess.Substring(0, endOfUserName);
-
-            inputToProcess += inputToProcess.Remove(0, endOfUserName);
-
-            var startOfUserCommand = inputToProcess.IndexOf('/');
-            var endOfUserCommand = inputToProcess.IndexOf(' ');
-            userCommand = inputToProcess.Substring(startOfUserCommand, endOfUserCommand);
-
-            inputToProcess += inputToProcess.Remove(0, endOfUserCommand);
-
-            userMessage = inputToProcess;
+            string[] choppedInput = inputToProcess.Split(" ");
+            userName = choppedInput[0];
+            userCommand = choppedInput[1];
+            userMessage = choppedInput.Skip(2).Aggregate("", (current, next) => $"{current} {next}").Trim();
         }
     }
 }
