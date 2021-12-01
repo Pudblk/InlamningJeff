@@ -24,21 +24,5 @@ namespace InlamningJeff.Tests
             // Assert
             Assert.AreEqual("/post", commandFromUserInput);
         }
-
-        [TestMethod()]
-        [DataRow("Alice /post Hello World!")]
-        public void TestProcessUserInput(string inputToProcess)
-        {
-            // Arrange
-            var consoleHelper = new ConsoleHelper();
-            string[] expectedResult = { "Alice", "/post", "Hello World!" };
-
-            // Act
-            var actualResult = consoleHelper.ProcessUserInput(inputToProcess);
-            bool isTheSame = expectedResult.SequenceEqual(actualResult);
-
-            // Assert
-            Assert.IsTrue(isTheSame);
-        }
     }
 }

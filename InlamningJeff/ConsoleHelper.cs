@@ -12,20 +12,6 @@ namespace InlamningJeff
         {
 
         }
-        public string[] ProcessUserInput(string inputToProcess)
-        {
-            string userName, userCommand, userMessage;
-            inputToProcess.Trim();
-
-            string[] choppedInput = inputToProcess.Split(" ");
-            userName = choppedInput[0];
-            userCommand = choppedInput[1];
-            userMessage = choppedInput.Skip(2).Aggregate("", (current, next) => $"{current} {next}").Trim();
-
-            string[] processedInput = { userName, userCommand, userMessage };
-            return processedInput;
-        }
-
         public string GetCommandFromUserInput(string userInputToGetCommandFrom)
         {
             userInputToGetCommandFrom.Trim();
