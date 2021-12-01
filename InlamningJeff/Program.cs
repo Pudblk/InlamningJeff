@@ -13,7 +13,6 @@ namespace InlamningJeff
             while(running)
             {
                 Console.WriteLine("Hello");
-                Console.WriteLine("What do you want to do?");
                 var userInputToProcess = Console.ReadLine();
                 var isPrivateMessage = userInputToProcess.Contains("/send_message");
                 var hasTaggedUser = userInputToProcess.Contains('@');
@@ -21,11 +20,16 @@ namespace InlamningJeff
                 var command = consoleHelper.GetCommandFromUserInput(userInputToProcess);
                 var userNameOfSender = consoleHelper.GetUserNameFromUserInput(userInputToProcess);
                 var messageBody = consoleHelper.GetMessageBodyFromUserInput(userInputToProcess);
-                string userNameToInteractWith = null;
+                var userNameToInteractWith = consoleHelper.GetUserNameToInteractWith(userInputToProcess);
+
+                if(userNameOfSender == "Alice" && command == "view_messages")
+                {
+                    var allPrivateMessages = engine.GetAllPrivateMessages();
+                }
 
                 if (hasTaggedUser)
                 {
-                    //userNameToInteractWith = consoleHelper.GetUserNameOfTaggedUser(userInputToProcess);
+                    userNameToInteractWith = consoleHelper.GetUserNameOfTaggedUser(userInputToProcess);
                 }
 
                 if (isPrivateMessage)
@@ -40,33 +44,23 @@ namespace InlamningJeff
                         break;
 
                     case "/timeline":
-                        //engine.GetTimeline(userNameOfSender, userNameOfReciever);
+                        engine.GetTimeline(userNameToInteractWith);
                         break;
 
                     case "/follow":
-                        //engine.FollowUser();
+                        engine.FollowUser(userNameOfSender, userNameToInteractWith);
                         break;
 
                     case "/wall":
-                        //engine.GetWall();
+                        engine.GetWall(userNameOfSender);
                         break;
 
                     case "/send_message":
-                        //engine.SendPrivateMessage();
-                        break;
-
-                    case "view_messages":
-                        //engine.GetAllPrivateMessages();
+                        //engine.SendPrivateMessage(userNameOfSender, userNameToInteractWith);
                         break;
 
                     default:
                         break;
-                }
-
-                Console.WriteLine("Do you want to continue: Y/N");
-                if (command == "N")
-                {
-                    running = false;
                 }
             }
         }

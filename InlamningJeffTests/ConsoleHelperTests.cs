@@ -13,8 +13,8 @@ namespace InlamningJeff.Tests
     {
         [TestMethod()]
         [DataRow("Alice /post Hello World!", "/post"),
-         DataRow("Alice /timeline", "/timeline"),
-         DataRow("Alice /follow Hello World!", "/follow"),
+         DataRow("Alice /timeline Darren", "/timeline"),
+         DataRow("Alice /follow Emma", "/follow"),
          DataRow("Bob /post @Charlie what are your plans tonight?", "/post")]
 
         public void TestGetCommandFromUserInput(string userInput, string expectedResult)
@@ -31,7 +31,7 @@ namespace InlamningJeff.Tests
 
         [TestMethod()]
         [DataRow("Alice /post Hello World!", "Alice"),
-         DataRow("Spongebob /follow", "Spongebob"),
+         DataRow("Spongebob /follow Alice", "Spongebob"),
          DataRow("Bob /post @Charlie what are your plans tonight?", "Bob")]
         public void TestGetUserNameFromUserInput(string userInput, string expectedResult)
         {
@@ -88,6 +88,20 @@ namespace InlamningJeff.Tests
 
             // Assert
             Assert.AreEqual(expectedResult, nameOfTaggedUser);
+        }
+
+        [TestMethod()]
+        [DataRow("Charlie /follow Alice", "Alice")]
+        public void TestGetUserNameToFollow(string userInput, string expectedResult)
+        {
+            // Arrange
+            var consoleHelper = new ConsoleHelper();
+
+            // Act
+            var nameOfUserToFollow = consoleHelper.GetUserNameToInteractWith(userInput);
+
+            // Assert
+            Assert.AreEqual(expectedResult, nameOfUserToFollow);
         }
     }
 }

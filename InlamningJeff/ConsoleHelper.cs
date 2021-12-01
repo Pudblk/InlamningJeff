@@ -78,5 +78,14 @@ namespace InlamningJeff
 
             return taggedUserName;
         }
+
+        public string GetUserNameToInteractWith(string userInputToGetFollowingNameFrom)
+        {
+            userInputToGetFollowingNameFrom.Trim();
+
+            string[] choppedUserInput = userInputToGetFollowingNameFrom.Split(' ');
+            string userNameToFollow = choppedUserInput[2];
+            return userNameToFollow;
+        }
     }
 }

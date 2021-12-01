@@ -11,5 +11,10 @@ namespace InlamningJeff
         public string Body { get; set; }
         public string From { get; set; }
         public DateTime TimeStamp { get; set; }
+        public Message(string body)
+        {
+            Body = body;
+            TimeStamp = DateTime.Now;
+        }
     }
 }

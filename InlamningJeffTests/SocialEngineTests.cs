@@ -32,6 +32,7 @@ namespace InlamningJeff.Tests
 
         [TestMethod()]
         [DataRow("Mallory", "Message To Alice", "Alice")]
+        [DataRow("Bob", "What are your plans tonight?", "Alice")]
         public void TestSendPrivateMessage(string userNameOfSender, string messageBody, string userNameOfReciever)
         {
             // Arrange
@@ -135,6 +136,36 @@ namespace InlamningJeff.Tests
 
             // Assert
             Assert.AreEqual(expectedWallResult, actualWallResult);
+        }
+
+        [TestMethod()]
+        [DataRow("Mallory", "Message To Alice", "Alice")]
+        [DataRow("Bob", "What are your plans tonight?", "Alice")]
+        public void TestGetAllPrivateMessages(string userNameOfSender, string privateMessage, string userNameOfReciever)
+        {
+            // Arrange
+            var engine = new SocialEngine();
+            List<Message> expectedResult = new List<Message>();
+
+            var user = new User(userNameOfSender);
+            var message = new Message(privateMessage);
+            user.PrivateMessages.Add(message);
+            expectedResult.Add(message);
+            message = new Message(userNameOfSender + privateMessage);
+            user.PrivateMessages.Add(message);
+            expectedResult.Add(message);
+            engine.Users.Add(user);
+
+            user = new User(userNameOfReciever);
+            message = new Message(privateMessage + userNameOfReciever);
+            user.PrivateMessages.Add(message);
+            expectedResult.Add(message);
+
+            // Act
+            var allPrivateMessages = engine.GetAllPrivateMessages();
+
+            // Assert
+            Assert.AreEqual(expectedResult, allPrivateMessages);
         }
     }
 }

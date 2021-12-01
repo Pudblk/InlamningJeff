@@ -53,8 +53,7 @@ namespace InlamningJeff
         {
             var sender = Users.FirstOrDefault(user => user.Name == userNameOfSender);
             var reciever = Users.FirstOrDefault(user => user.Name == userNameOfReciever);
-            Message message = new Message();
-            message.Body = messageBody;
+            Message message = new Message(messageBody);
             message.From = userNameOfSender;
             message.TimeStamp = DateTime.Now;
 
@@ -72,6 +71,19 @@ namespace InlamningJeff
                     user.Wall.Add(post);
                 }
             }
+        }
+
+        public List<Message> GetAllPrivateMessages()
+        {
+            List<Message> allPrivateMessages = new List<Message>(); ;
+            foreach (User user in Users)
+            {
+                foreach (Message message in user.PrivateMessages)
+                {
+                    allPrivateMessages.Add(message);
+                }
+            }
+            return allPrivateMessages;
         }
     }
 }
