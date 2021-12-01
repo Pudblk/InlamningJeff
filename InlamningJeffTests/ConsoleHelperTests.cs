@@ -48,7 +48,7 @@ namespace InlamningJeff.Tests
 
         [TestMethod()]
         [DataRow("Bob /send_message Alice Hello Alice!", "Alice")]
-        public void GetRecieverUserNameFromUserInputTest(string userInput, string expectedResult)
+        public void TestGetRecieverUserNameFromUserInput(string userInput, string expectedResult)
         {
             // Arrange
             var consoleHelper = new ConsoleHelper();

@@ -15,9 +15,9 @@ namespace InlamningJeff
         public string GetRecieverUserNameFromUserInput(string userInputToGetRecieverNameFrom)
         {
             userInputToGetRecieverNameFrom.Trim();
-            var recieverUserName = "";
-
-            return recieverUserName;
+            string[] choppedInput = userInputToGetRecieverNameFrom.Split(' ');
+            var recieverUserNameFromInput = choppedInput[2];
+            return recieverUserNameFromInput;
         }
 
         public string GetCommandFromUserInput(string userInputToGetCommandFrom)
