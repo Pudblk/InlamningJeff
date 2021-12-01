@@ -115,19 +115,5 @@ namespace InlamningJeff.Tests
             // Assert
             Assert.AreEqual(expectedWallResult, actualWallResult);
         }
-
-        [TestMethod()]
-        [DataRow("Alice /post Hello World!")]
-        public void TestProcessUserInput(string inputToProcess)
-        {
-            // Arrange
-            var engine = new SocialEngine();
-
-            // Act
-            engine.ProcessUserInput(inputToProcess);
-
-            // Assert
-            Assert.Fail();
-        }
     }
 }
