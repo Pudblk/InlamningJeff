@@ -14,10 +14,9 @@ namespace InlamningJeff
             Users = new List<User>();
         }
 
-        public void Post(string userName, string textToPost)
+        public void Post(string userName, string bodyOfPost)
         {
-            Post post = new Post(textToPost);
-
+            Post post = new Post(bodyOfPost);
             var userExist = Users.FirstOrDefault(x => x.Name == userName);
 
             if (userExist == null)

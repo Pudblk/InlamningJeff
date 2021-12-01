@@ -17,7 +17,7 @@ namespace InlamningJeff.Tests
          DataRow("Alice /follow Hello World!", "/follow"),
          DataRow("Bob /post @Charlie what are your plans tonight?", "/post")]
         
-        public void GetCommandFromUserInput(string userInput, string expectedResult)
+        public void TestGetCommandFromUserInput(string userInput, string expectedResult)
         {
             // Arrange
             var consoleHelper = new ConsoleHelper();
@@ -27,6 +27,23 @@ namespace InlamningJeff.Tests
 
             // Assert
             Assert.AreEqual(expectedResult, commandFromUserInput);
+        }
+
+        [TestMethod()]
+        [DataRow("Alice /post Hello World!", "Alice"),
+         DataRow("Charlie /timeline Hello World!", "Charlie"),
+         DataRow("Spongebob /follow Hello World!", "Spongebob"),
+         DataRow("Bob /post @Charlie what are your plans tonight?", "Bob")]
+        public void TestGetUserNameFromUserInput(string userInput, string expectedResult)
+        {
+            // Arrange
+            var consoleHelper = new ConsoleHelper();
+
+            // Act
+            var userNameFromUserInput = consoleHelper.GetUserNameFromUserInput(userInput);
+
+            // Assert
+            Assert.AreEqual(expectedResult, userNameFromUserInput);
         }
     }
 }

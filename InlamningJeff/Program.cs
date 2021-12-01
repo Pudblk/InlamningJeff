@@ -16,12 +16,19 @@ namespace InlamningJeff
                 Console.WriteLine("What do you want to do?");
                 var userInputToProcess = Console.ReadLine();
                 var command = consoleHelper.GetCommandFromUserInput(userInputToProcess);
+                var userName = consoleHelper.GetUserNameFromUserInput(userInputToProcess);
 
                 switch (command)
                 {
                     case "/post":
-                        //engine.Post();
+                        //engine.Post(userName, textToPost);
                         break;
+                    case "/timeline":
+                        //engine.GetTimeline();
+                        break;
+                    case "/follow":
+                        break;
+
                     default:
                         break;
                 }

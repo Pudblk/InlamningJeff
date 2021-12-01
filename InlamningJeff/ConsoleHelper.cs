@@ -15,7 +15,7 @@ namespace InlamningJeff
         public string GetCommandFromUserInput(string userInputToGetCommandFrom)
         {
             userInputToGetCommandFrom.Trim();
-            var isPrivateMessage = userInputToGetCommandFrom.Contains('@');
+            var haveTaggedUser = userInputToGetCommandFrom.Contains('@');
             string commandFromUserInput = "";
 
             var startIndexOfCommand = userInputToGetCommandFrom.IndexOf('/');
@@ -32,6 +32,14 @@ namespace InlamningJeff
                 }
             }
             return commandFromUserInput;
+        }
+
+        public string GetUserNameFromUserInput(string userInputToGetNameFrom)
+        {
+            userInputToGetNameFrom.Trim();
+            var lastIndexOfUserName = userInputToGetNameFrom.IndexOf(' ');
+            var userName = userInputToGetNameFrom.Substring(0, lastIndexOfUserName);
+            return userName;
         }
     }
 }

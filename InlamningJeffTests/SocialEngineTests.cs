@@ -15,6 +15,7 @@ namespace InlamningJeff.Tests
         [TestMethod()]
         [DataRow("Mallory", "Hello World!")]
         [DataRow("Bob", "Goodbye World!")]
+        [DataRow("Bob", "Goodbye World!")]
         public void TestPost(string expectedUserName, string expectedPost)
         {
             // Arrange
