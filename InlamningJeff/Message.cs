@@ -10,7 +10,6 @@ namespace InlamningJeff
     {
         public string Body { get; set; }
         public string From { get; set; }
-        public string To { get; set; }
         public DateTime TimeStamp { get; set; }
     }
 }

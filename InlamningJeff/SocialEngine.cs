@@ -50,6 +50,18 @@ namespace InlamningJeff
             followingUser.Following.Add(followUser);
         }
 
+        public void SendPrivateMessage(string userNameOfSender, string messageBody, string userNameOfReciever)
+        {
+            var sender = Users.FirstOrDefault(user => user.Name == userNameOfSender);
+            var reciever = Users.FirstOrDefault(user => user.Name == userNameOfReciever);
+            Message message = new Message();
+            message.Body = messageBody;
+            message.From = userNameOfSender;
+            message.TimeStamp = DateTime.Now;
+
+            reciever.PrivateMessages.Add(message);
+        }
+
         public void GetWall(string userName)
         {
             var user = Users.FirstOrDefault(user => user.Name == userName);

@@ -31,6 +31,27 @@ namespace InlamningJeff.Tests
         }
 
         [TestMethod()]
+        [DataRow("Mallory", "Message To Alice", "Alice")]
+        public void TestSendPrivateMessage(string userNameOfSender, string messageBody, string userNameOfReciever)
+        {
+            // Arrange
+            var engine = new SocialEngine();
+            var userToSendPrivateMessage = new User(userNameOfSender);
+            engine.Users.Add(userToSendPrivateMessage);
+
+            var userToRecieveMessage = new User(userNameOfReciever);
+            engine.Users.Add(userToRecieveMessage);
+
+
+            // Act
+            engine.SendPrivateMessage(userNameOfSender, messageBody, userNameOfReciever);
+            var recieverInbox = userToRecieveMessage.PrivateMessages.FirstOrDefault(message => message.Body == messageBody).Body;
+
+            // Assert
+            Assert.AreEqual(messageBody, recieverInbox);
+        }
+
+        [TestMethod()]
         [DataRow("Alice", "Hello World!", "Goodbye!", "Bob")]
         [DataRow("Charlie", "First Message", "Second Message", "Alice")]
         public void TestGetTimeline(string userNameToGetFrom, string firstPost, string secondPost, string userNameToRecieve)
