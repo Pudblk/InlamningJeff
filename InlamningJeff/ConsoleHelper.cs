@@ -15,6 +15,7 @@ namespace InlamningJeff
         public string GetCommandFromUserInput(string userInputToGetCommandFrom)
         {
             userInputToGetCommandFrom.Trim();
+            var isPrivateMessage = userInputToGetCommandFrom.Contains('@');
             string commandFromUserInput = "";
 
             var startIndexOfCommand = userInputToGetCommandFrom.IndexOf('/');
@@ -30,8 +31,7 @@ namespace InlamningJeff
                     continue;
                 }
             }
-
-            return "Something went wrong!";
+            return commandFromUserInput;
         }
     }
 }

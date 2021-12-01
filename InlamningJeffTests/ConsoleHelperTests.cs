@@ -12,8 +12,12 @@ namespace InlamningJeff.Tests
     public class ConsoleHelperTests
     {
         [TestMethod()]
-        [DataRow("Alice /post Hello World!")]
-        public void GetCommandFromUserInput(string userInput)
+        [DataRow("Alice /post Hello World!", "/post"),
+         DataRow("Alice /timeline Hello World!", "/timeline"),
+         DataRow("Alice /follow Hello World!", "/follow"),
+         DataRow("Bob /post @Charlie what are your plans tonight?", "/post")]
+        
+        public void GetCommandFromUserInput(string userInput, string expectedResult)
         {
             // Arrange
             var consoleHelper = new ConsoleHelper();
@@ -22,7 +26,7 @@ namespace InlamningJeff.Tests
             var commandFromUserInput = consoleHelper.GetCommandFromUserInput(userInput);
 
             // Assert
-            Assert.AreEqual("/post", commandFromUserInput);
+            Assert.AreEqual(expectedResult, commandFromUserInput);
         }
     }
 }
