@@ -49,5 +49,34 @@ namespace InlamningJeff
             var userName = userInputToGetNameFrom.Substring(0, lastIndexOfUserName);
             return userName;
         }
+
+        public string GetMessageBodyFromUserInput(string userInputToGetMessageBodyFrom)
+        {
+            userInputToGetMessageBodyFrom.Trim();
+
+            string[] choppedUserInput = userInputToGetMessageBodyFrom.Split(' ');
+            string messageBody = choppedUserInput.Skip(3).Aggregate("", (current, next) => $"{current} {next}").Trim();
+
+            return messageBody;
+        }
+
+        public string GetUserNameOfTaggedUser(string userInputToGetTaggedUserFrom)
+        {
+            userInputToGetTaggedUserFrom.Trim();
+
+            var startIndexOfUserName = 1 + userInputToGetTaggedUserFrom.IndexOf('@');
+            var userNameLength = 0;
+            for (int i = startIndexOfUserName; i < userInputToGetTaggedUserFrom.Length; i++)
+            {
+                if (userInputToGetTaggedUserFrom[i] == ' ')
+                {
+                    userNameLength = i - startIndexOfUserName;
+                    break;
+                }
+            }
+            string taggedUserName = userInputToGetTaggedUserFrom.Substring(startIndexOfUserName, userNameLength);
+
+            return taggedUserName;
+        }
     }
 }

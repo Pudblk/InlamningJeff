@@ -16,23 +16,31 @@ namespace InlamningJeff
                 Console.WriteLine("What do you want to do?");
                 var userInputToProcess = Console.ReadLine();
                 var isPrivateMessage = userInputToProcess.Contains("/send_message");
+                var hasTaggedUser = userInputToProcess.Contains('@');
+
                 var command = consoleHelper.GetCommandFromUserInput(userInputToProcess);
                 var userNameOfSender = consoleHelper.GetUserNameFromUserInput(userInputToProcess);
-                var userNameOfReciever = "";
+                var messageBody = consoleHelper.GetMessageBodyFromUserInput(userInputToProcess);
+                string userNameToInteractWith = null;
+
+                if (hasTaggedUser)
+                {
+                    //userNameToInteractWith = consoleHelper.GetUserNameOfTaggedUser(userInputToProcess);
+                }
 
                 if (isPrivateMessage)
                 {
-                    userNameOfReciever = consoleHelper.GetRecieverUserNameFromUserInput(userInputToProcess);
+                    userNameToInteractWith = consoleHelper.GetRecieverUserNameFromUserInput(userInputToProcess);
                 }
 
                 switch (command)
                 {
                     case "/post":
-                        //engine.Post(userNameOfSender, textToPost);
+                        engine.Post(userNameOfSender, messageBody);
                         break;
 
                     case "/timeline":
-                        //engine.GetTimeline();
+                        //engine.GetTimeline(userNameOfSender, userNameOfReciever);
                         break;
 
                     case "/follow":
