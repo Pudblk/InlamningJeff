@@ -16,7 +16,7 @@ namespace InlamningJeff.Tests
          DataRow("Alice /timeline Hello World!", "/timeline"),
          DataRow("Alice /follow Hello World!", "/follow"),
          DataRow("Bob /post @Charlie what are your plans tonight?", "/post")]
-        
+
         public void TestGetCommandFromUserInput(string userInput, string expectedResult)
         {
             // Arrange
@@ -44,6 +44,20 @@ namespace InlamningJeff.Tests
 
             // Assert
             Assert.AreEqual(expectedResult, userNameFromUserInput);
+        }
+
+        [TestMethod()]
+        [DataRow("Bob /send_message Alice Hello Alice!", "Alice")]
+        public void GetRecieverUserNameFromUserInputTest(string userInput, string expectedResult)
+        {
+            // Arrange
+            var consoleHelper = new ConsoleHelper();
+
+            // Act
+            var recieverUserNameFromUserInput = consoleHelper.GetRecieverUserNameFromUserInput(userInput);
+
+            // Assert
+            Assert.AreEqual(expectedResult, recieverUserNameFromUserInput);
         }
     }
 }

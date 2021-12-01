@@ -10,8 +10,16 @@ namespace InlamningJeff
     {
         public ConsoleHelper()
         {
-
         }
+
+        public string GetRecieverUserNameFromUserInput(string userInputToGetRecieverNameFrom)
+        {
+            userInputToGetRecieverNameFrom.Trim();
+            var recieverUserName = "";
+
+            return recieverUserName;
+        }
+
         public string GetCommandFromUserInput(string userInputToGetCommandFrom)
         {
             userInputToGetCommandFrom.Trim();
