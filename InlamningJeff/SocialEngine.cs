@@ -63,7 +63,7 @@ namespace InlamningJeff
         public List<Post> GetWall(string userName)
         {
             var user = Users.FirstOrDefault(user => user.Name == userName);
-            List<Post> wallPosts = new List<Post>(); ;
+            List<Post> wallPosts = new List<Post>();
             foreach (var item in user.Following)
             {
                 foreach (var post in user.Posts)
@@ -76,7 +76,7 @@ namespace InlamningJeff
 
         public List<Message> GetAllPrivateMessages()
         {
-            List<Message> allPrivateMessages = new List<Message>(); ;
+            List<Message> allPrivateMessages = new List<Message>();
             foreach (User user in Users)
             {
                 foreach (Message message in user.PrivateMessages)
