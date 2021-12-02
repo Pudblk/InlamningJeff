@@ -16,15 +16,15 @@ namespace InlamningJeff
 
                 var processedUserInput = consoleHelper.ProcessUserInput(userInputToProcess);
 
-                var isPrivateMessage = userInputToProcess.Contains("/send_message");
-                var hasTaggedUser = userInputToProcess.Contains('@');
+                var isPrivateMessage = processedUserInput.IsPrivateMessage;
+                var hasTaggedUser = processedUserInput.HasTaggedUser;
 
-                var command = consoleHelper.GetCommandFromUserInput(userInputToProcess);
-                var userNameOfSender = consoleHelper.GetUserNameFromUserInput(userInputToProcess);
-                var messageBody = consoleHelper.GetMessageBodyFromUserInput(userInputToProcess);
-                var userNameToInteractWith = consoleHelper.GetUserNameToInteractWith(userInputToProcess);
+                var command = processedUserInput.Command;
+                var userNameOfSender = processedUserInput.NameOfSender;
+                var messageBody = processedUserInput.Body;
+                var userNameToInteractWith = processedUserInput.NameOfReciever;
 
-                if(userNameOfSender == "Alice" && command == "view_messages")
+                if (userNameOfSender == "Alice" && command == "view_messages")
                 {
                     var allPrivateMessages = engine.GetAllPrivateMessages();
                     foreach (var privateMessage in allPrivateMessages)
@@ -35,13 +35,7 @@ namespace InlamningJeff
 
                 if (hasTaggedUser)
                 {
-                    userNameToInteractWith = consoleHelper.GetUserNameOfTaggedUser(userInputToProcess);
                     engine.TagUser(userNameOfSender, userNameToInteractWith, messageBody);
-                }
-
-                if (isPrivateMessage)
-                {
-                    userNameToInteractWith = consoleHelper.GetRecieverUserNameFromUserInput(userInputToProcess);
                 }
 
                 switch (command)
