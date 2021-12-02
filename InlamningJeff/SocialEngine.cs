@@ -87,9 +87,19 @@ namespace InlamningJeff
             return allPrivateMessages;
         }
 
-        public void TagUser(string taggedUser)
+        public void TagUser(string userSenderName, string taggedUserName, string postBody)
         {
-            throw new NotImplementedException();
+            var userToGetTagged = Users.FirstOrDefault(user => user.Name == taggedUserName);
+            var userSender = Users.FirstOrDefault(user => user.Name == userSenderName);
+
+            Post post = new Post(postBody);
+            if(userToGetTagged == null)
+            {
+                Console.WriteLine($"{taggedUserName} not found");
+                return;
+            }
+            userToGetTagged.Posts.Add(post);
+            userSender.Posts.Add(post);
         }
     }
 }

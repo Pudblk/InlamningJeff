@@ -12,6 +12,8 @@ namespace InlamningJeff.Tests
     [TestClass()]
     public class SocialEngineTests
     {
+        [TestInitialize]
+
         [TestMethod()]
         [DataRow("Mallory", "Hello World!")]
         [DataRow("Bob", "Goodbye World!")]
@@ -146,14 +148,40 @@ namespace InlamningJeff.Tests
             var engine = new SocialEngine();
             var userSender = new User(userNameOfSender);
             engine.Users.Add(userSender);
+
             var taggedUser = new User(taggedUserName);
             engine.Users.Add(taggedUser);
+            bool gotTagged = false;
+
+            string senderCorrectPost = null;
+            string recieverCorrectPost = null;
 
             // Act
-            engine.TagUser(taggedUserName);
+            engine.TagUser(userNameOfSender, taggedUserName, postBody);
+
+            foreach (var post in userSender.Posts)
+            {
+                if (post.Body == postBody)
+                {
+                    senderCorrectPost = post.Body;
+                }
+            }
+
+            foreach (var post in taggedUser.Posts)
+            {
+                if(post.Body == postBody)
+                {
+                    recieverCorrectPost = post.Body;
+                }
+            }
+
+            if(senderCorrectPost == recieverCorrectPost)
+            {
+                gotTagged = true;
+            }
 
             // Assert
-            Assert.Fail();
+            Assert.IsTrue(gotTagged);
         }
 
         [TestMethod()]
@@ -176,6 +204,7 @@ namespace InlamningJeff.Tests
             // Act
             var allPrivateMessages = engine.GetAllPrivateMessages();
             bool isMessageSame = false;
+
             foreach (var sentMessage in allPrivateMessages)
             {
                 foreach (var expectedMessage in expectedResult)

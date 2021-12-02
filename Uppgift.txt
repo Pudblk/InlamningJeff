@@ -28,8 +28,8 @@ Charlie kan se en samlad lista över alla personer som han har prenumererat på 
 Obs: Om Charlie följer Alice och Bob kommer han att se en tidssekvenserad lista med inlägg från dem på sin vägg. Det är inlägget som visas senast överst.
 
 Omnämnanden
-Bob kan länka till Charlie i ett meddelande med "@".
-> Bob /post @Charlie what are your plans tonight?
+Bob kan länka till Alice i ett meddelande med "@".
+> Bob /post @Alice what are your plans tonight?
 
 Obs: detta är inte ett nytt kommando, bara en utökning av hur /post-kommandot fungerar. Alla omnämnanden ska visas på en användares vägg även om de inte följer användaren.
 
