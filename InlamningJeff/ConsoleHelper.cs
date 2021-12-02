@@ -21,7 +21,6 @@ namespace InlamningJeff
             userInput.NameOfReciever = GetRecieverUserNameFromUserInput(inputByUser);
             userInput.Command = GetCommandFromUserInput(inputByUser);
             userInput.HasTaggedUser = inputByUser.Contains('@');
-            userInput.IsPrivateMessage = inputByUser.Contains("/send_message");
             userInput.Body = GetMessageBodyFromUserInput(inputByUser);
             return userInput;
         }

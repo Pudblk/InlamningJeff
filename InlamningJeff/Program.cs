@@ -16,7 +16,6 @@ namespace InlamningJeff
 
                 var processedUserInput = consoleHelper.ProcessUserInput(userInputToProcess);
 
-                var isPrivateMessage = processedUserInput.IsPrivateMessage;
                 var hasTaggedUser = processedUserInput.HasTaggedUser;
 
                 var command = processedUserInput.Command;

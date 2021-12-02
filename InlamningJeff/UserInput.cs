@@ -13,7 +13,6 @@ namespace InlamningJeff
         public string Command { get; set; }
         public string Body { get; set; }
         public bool HasTaggedUser { get; set; }
-        public bool IsPrivateMessage { get; set; }
         public UserInput()
         {
             
