@@ -148,11 +148,12 @@ namespace InlamningJeff.Tests
             engine.Users.Add(userSender);
             var taggedUser = new User(taggedUserName);
             engine.Users.Add(taggedUser);
+
             // Act
             engine.TagUser(taggedUserName);
 
             // Assert
-
+            Assert.Fail();
         }
 
         [TestMethod()]
