@@ -60,17 +60,18 @@ namespace InlamningJeff
             reciever.PrivateMessages.Add(message);
         }
 
-        public void GetWall(string userName)
+        public List<Post> GetWall(string userName)
         {
             var user = Users.FirstOrDefault(user => user.Name == userName);
-
+            List<Post> wallPosts = new List<Post>(); ;
             foreach (var item in user.Following)
             {
                 foreach (var post in user.Posts)
                 {
-                    user.Wall.Add(post);
+                    wallPosts.Add(post);
                 }
             }
+            return wallPosts;
         }
 
         public List<Message> GetAllPrivateMessages()

@@ -9,10 +9,9 @@ namespace InlamningJeff
             SocialEngine engine = new SocialEngine();
             ConsoleHelper consoleHelper = new ConsoleHelper();
             bool running = true;
-
+            Console.WriteLine("Hello");
             while(running)
             {
-                Console.WriteLine("Hello");
                 var userInputToProcess = Console.ReadLine();
                 var isPrivateMessage = userInputToProcess.Contains("/send_message");
                 var hasTaggedUser = userInputToProcess.Contains('@');
@@ -44,19 +43,28 @@ namespace InlamningJeff
                         break;
 
                     case "/timeline":
-                        engine.GetTimeline(userNameToInteractWith);
+                        var timeline = engine.GetTimeline(userNameToInteractWith);
+                        foreach (var post in timeline)
+                        {
+                            Console.WriteLine($"Post: {post.Body} Timestamp: {post.TimeStamp}");
+                        }
                         break;
 
                     case "/follow":
                         engine.FollowUser(userNameOfSender, userNameToInteractWith);
+                        Console.WriteLine($"You started following {userNameToInteractWith}");
                         break;
 
                     case "/wall":
-                        engine.GetWall(userNameOfSender);
+                        var wallPosts =  engine.GetWall(userNameOfSender);
+                        foreach (var wallpost in wallPosts)
+                        {
+                            Console.WriteLine($"{wallpost.Body} {wallpost.TimeStamp}");
+                        }
                         break;
 
                     case "/send_message":
-                        //engine.SendPrivateMessage(userNameOfSender, userNameToInteractWith);
+                        engine.SendPrivateMessage(userNameOfSender, messageBody, userNameToInteractWith);
                         break;
 
                     default:
