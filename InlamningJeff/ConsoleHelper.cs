@@ -23,7 +23,6 @@ namespace InlamningJeff
         public string GetCommandFromUserInput(string userInputToGetCommandFrom)
         {
             userInputToGetCommandFrom.Trim();
-            var haveTaggedUser = userInputToGetCommandFrom.Contains('@');
             string commandFromUserInput = "";
 
             var startIndexOfCommand = userInputToGetCommandFrom.IndexOf('/');

@@ -8,9 +8,9 @@ namespace InlamningJeff
         {
             SocialEngine engine = new SocialEngine();
             ConsoleHelper consoleHelper = new ConsoleHelper();
-            bool running = true;
             Console.WriteLine("Hello");
-            while(running)
+
+            while(true)
             {
                 var userInputToProcess = Console.ReadLine();
                 var isPrivateMessage = userInputToProcess.Contains("/send_message");
@@ -24,11 +24,16 @@ namespace InlamningJeff
                 if(userNameOfSender == "Alice" && command == "view_messages")
                 {
                     var allPrivateMessages = engine.GetAllPrivateMessages();
+                    foreach (var privateMessage in allPrivateMessages)
+                    {
+                        Console.WriteLine($"{privateMessage.Body} {privateMessage.TimeStamp} {privateMessage.From}");
+                    }
                 }
 
                 if (hasTaggedUser)
                 {
                     userNameToInteractWith = consoleHelper.GetUserNameOfTaggedUser(userInputToProcess);
+                    engine.TagUser(userNameOfSender, userNameToInteractWith, messageBody);
                 }
 
                 if (isPrivateMessage)
