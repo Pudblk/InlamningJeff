@@ -8,9 +8,9 @@ namespace InlamningJeff
         {
             SocialEngine engine = new SocialEngine();
             ConsoleHelper consoleHelper = new ConsoleHelper();
-            bool running = true;
             Console.WriteLine("Hello");
-            while(running)
+
+            while(true)
             {
                 var userInputToProcess = Console.ReadLine();
                 var isPrivateMessage = userInputToProcess.Contains("/send_message");
