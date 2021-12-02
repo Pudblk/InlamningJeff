@@ -12,7 +12,7 @@ namespace InlamningJeff.Tests
     [TestClass()]
     public class SocialEngineTests
     {
-        [TestInitialize]
+        //[TestInitialize]
 
         [TestMethod()]
         [DataRow("Mallory", "Hello World!")]

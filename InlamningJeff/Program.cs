@@ -13,6 +13,9 @@ namespace InlamningJeff
             while(true)
             {
                 var userInputToProcess = Console.ReadLine();
+
+                var processedUserInput = consoleHelper.ProcessUserInput(userInputToProcess);
+
                 var isPrivateMessage = userInputToProcess.Contains("/send_message");
                 var hasTaggedUser = userInputToProcess.Contains('@');
 

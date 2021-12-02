@@ -6,10 +6,24 @@ using System.Threading.Tasks;
 
 namespace InlamningJeff
 {
+    
     public class ConsoleHelper
     {
+        
         public ConsoleHelper()
         {
+        }
+
+        public UserInput ProcessUserInput(string inputByUser)
+        {
+            UserInput userInput = new UserInput();
+            userInput.NameOfSender = GetUserNameFromUserInput(inputByUser);
+            userInput.NameOfReciever = GetRecieverUserNameFromUserInput(inputByUser);
+            userInput.Command = GetCommandFromUserInput(inputByUser);
+            userInput.HasTaggedUser = inputByUser.Contains('@');
+            userInput.IsPrivateMessage = inputByUser.Contains("/send_message");
+            userInput.Body = GetMessageBodyFromUserInput(inputByUser);
+            return userInput;
         }
 
         public string GetRecieverUserNameFromUserInput(string userInputToGetRecieverNameFrom)
@@ -19,6 +33,8 @@ namespace InlamningJeff
             var recieverUserNameFromInput = choppedInput[2];
             return recieverUserNameFromInput;
         }
+
+        
 
         public string GetCommandFromUserInput(string userInputToGetCommandFrom)
         {

@@ -12,11 +12,24 @@ namespace InlamningJeff.Tests
     public class ConsoleHelperTests
     {
         [TestMethod()]
+        [DataRow("Alice /post Hello World!", "Alice")]
+        public void TestProcessUserInput(string inputByUser, string expectedResult)
+        {
+            // Arrange
+            var consoleHelper = new ConsoleHelper();
+
+            // Act
+            var separatedUserInput = consoleHelper.ProcessUserInput(inputByUser);
+
+            // Assert
+            Assert.AreEqual(expectedResult, separatedUserInput.NameOfSender);
+        }
+
+        [TestMethod()]
         [DataRow("Alice /post Hello World!", "/post"),
          DataRow("Alice /timeline Darren", "/timeline"),
          DataRow("Alice /follow Emma", "/follow"),
          DataRow("Bob /post @Charlie what are your plans tonight?", "/post")]
-
         public void TestGetCommandFromUserInput(string userInput, string expectedResult)
         {
             // Arrange
