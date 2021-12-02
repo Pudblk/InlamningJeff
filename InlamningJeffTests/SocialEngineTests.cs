@@ -139,6 +139,23 @@ namespace InlamningJeff.Tests
         }
 
         [TestMethod()]
+        [DataRow("Bob", "Alice", "What are your plans tonight?")]
+        public void TestTagUser(string userNameOfSender, string taggedUserName, string postBody)
+        {
+            // Arrange
+            var engine = new SocialEngine();
+            var userSender = new User(userNameOfSender);
+            engine.Users.Add(userSender);
+            var taggedUser = new User(taggedUserName);
+            engine.Users.Add(taggedUser);
+            // Act
+            engine.TagUser(taggedUserName);
+
+            // Assert
+
+        }
+
+        [TestMethod()]
         [DataRow("Mallory", "Message To Alice", "Alice")]
         [DataRow("Bob", "What are your plans tonight?", "Alice")]
         public void TestGetAllPrivateMessages(string userNameOfSender, string privateMessage, string userNameOfReciever)

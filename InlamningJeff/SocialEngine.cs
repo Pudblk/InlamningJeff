@@ -86,5 +86,10 @@ namespace InlamningJeff
             }
             return allPrivateMessages;
         }
+
+        public void TagUser(string taggedUser)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

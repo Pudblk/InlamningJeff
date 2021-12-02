@@ -65,6 +65,7 @@ namespace InlamningJeff
 
                     case "/send_message":
                         engine.SendPrivateMessage(userNameOfSender, messageBody, userNameToInteractWith);
+                        Console.WriteLine($"Message: {messageBody} sent to: {userNameToInteractWith}");
                         break;
 
                     default:
