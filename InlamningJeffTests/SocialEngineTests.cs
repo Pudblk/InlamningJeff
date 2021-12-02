@@ -148,24 +148,29 @@ namespace InlamningJeff.Tests
             List<Message> expectedResult = new List<Message>();
 
             var user = new User(userNameOfSender);
-            var message = new Message(privateMessage);
-            user.PrivateMessages.Add(message);
-            expectedResult.Add(message);
-            message = new Message(userNameOfSender + privateMessage);
-            user.PrivateMessages.Add(message);
-            expectedResult.Add(message);
             engine.Users.Add(user);
 
-            user = new User(userNameOfReciever);
-            message = new Message(privateMessage + userNameOfReciever);
+            var message = new Message(privateMessage);
             user.PrivateMessages.Add(message);
+
             expectedResult.Add(message);
 
             // Act
             var allPrivateMessages = engine.GetAllPrivateMessages();
+            bool isMessageSame = false;
+            foreach (var sentMessage in allPrivateMessages)
+            {
+                foreach (var expectedMessage in expectedResult)
+                {
+                    if(sentMessage == expectedMessage)
+                    {
+                        isMessageSame = true;
+                    }
+                }
+            }
 
             // Assert
-            Assert.AreEqual(expectedResult, allPrivateMessages);
+            Assert.IsTrue(isMessageSame);
         }
     }
 }

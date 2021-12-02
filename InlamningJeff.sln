@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InlamningJeff", "InlamningJeff\InlamningJeff.csproj", "{5B7457E8-4B7F-433D-AAF1-69A0421B5E65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InlamningJeff", "InlamningJeff\InlamningJeff.csproj", "{5B7457E8-4B7F-433D-AAF1-69A0421B5E65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InlamningJeffTests", "InlamningJeffTests\InlamningJeffTests.csproj", "{0DDD06FE-834C-4F06-A6CD-2637B3B138E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InlamningJeffTests", "InlamningJeffTests\InlamningJeffTests.csproj", "{0DDD06FE-834C-4F06-A6CD-2637B3B138E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{78582E6D-C2D7-464A-ABC3-10BE32E11DB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{0DDD06FE-834C-4F06-A6CD-2637B3B138E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DDD06FE-834C-4F06-A6CD-2637B3B138E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DDD06FE-834C-4F06-A6CD-2637B3B138E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78582E6D-C2D7-464A-ABC3-10BE32E11DB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78582E6D-C2D7-464A-ABC3-10BE32E11DB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78582E6D-C2D7-464A-ABC3-10BE32E11DB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78582E6D-C2D7-464A-ABC3-10BE32E11DB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
