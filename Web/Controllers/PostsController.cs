@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using InlamningJeff;
 using Web.Data;
+using Web.Dto;
 
 namespace Web.Controllers
 {
@@ -23,9 +24,22 @@ namespace Web.Controllers
 
         // GET: api/Posts
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Post>>> GetPost()
+        public async Task<ActionResult<IEnumerable<PostDto>>> GetPost()
         {
-            return await _context.Post.ToListAsync();
+            return await _context.Post
+                .Include(x => x.User)
+                .Select( x => new PostDto
+                {
+                    Id = x.Id,
+                    Message = x.Body,
+                    Created = x.TimeStamp,
+                    User = new UserDto
+                    {
+                        Name = x.User.Name,
+                        Id = x.User.Id
+                    }
+                })
+                .ToListAsync();
         }
 
         // GET: api/Posts/5

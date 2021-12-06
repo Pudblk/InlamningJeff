@@ -11,6 +11,7 @@ namespace InlamningJeff
         public int Id { get; set; }
         public DateTime TimeStamp { get; set; }
         public string Body { get; set; }
+        public User User { get; set; }
 
         public Post(string body)
         {
